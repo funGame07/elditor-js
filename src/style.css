@@ -1,0 +1,127 @@
+
+
+*{
+    box-sizing:border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+
+
+#elditor{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    position: relative;
+}
+
+#elditor-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #ddd;
+    /* position: sticky;
+    top: 0px; */
+}
+
+.elditor-btn, #elditor-btn-image {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.elditor-btn:hover, #elditor-btn-image:hover,
+.elditor-btn:focus, #elditor-btn-image:focus{
+    background-color: #e5e7eb;
+    outline: none;
+}
+
+.elditor-select {
+    padding: 6px 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.elditor-select:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+#elditor-editable {
+    padding: 16px;
+    min-height: 300px;
+    outline: none;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#elditor-editable:focus {
+    background-color: #fff;
+}
+
+#elditor-labelImage {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 6px;
+    transition: background 0.2s ease;
+    border: none;
+}
+
+#elditor-labelImage:hover {
+    background-color: #e5e7eb;
+}
+
+.elditor-active{
+    background-color: darkgray !important;
+}
+
+.badge{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    border-radius: 10px;
+}
+
+.badge.danger{
+    background-color: rgba(255, 0, 0, 0.171);
+    border: 1px solid rgb(255, 0, 0);
+    border-left: 5px solid rgb(255, 0, 0);
+}
+
+.badge.success{
+    background-color: rgba(0, 255, 30, 0.171);
+    border: 1px solid rgb(0, 255, 30);
+    border-left: 5px solid rgb(0, 255, 30);
+}
+
+.badge.warning{
+    background-color: rgba(255, 217, 0, 0.171);
+    border: 1px solid rgb(255, 217, 0);
+    border-left: 5px solid rgb(255, 217, 0);
+}
+
+.badge.info{
+    background-color: rgba(0, 140, 255, 0.171);
+    border: 1px solid rgb(0, 140, 255);
+    border-left: 5px solid rgb(0, 140, 255);
+}
+
+.badgeLogo{
+    padding: 15px 10px 10px 15px;
+}
+
+.badgeTextSection{
+    padding: 10px;
+}

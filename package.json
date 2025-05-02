@@ -1,0 +1,29 @@
+{
+  "name": "elditor-js",
+  "version": "1.0.0",
+  "description": "Simple text editor",
+  "main": "dist/elditor-js.cjs.js",        
+  "module": "dist/elditor-js.esm.js",  
+  "exports": {
+    "import": "./dist/elditor-js.esm.js",
+    "require": "./dist/elditor-js.umd.js"
+  },    
+  "unpkg": "dist/elditor-js.iife.min.js",  
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "files": [
+    "dist"
+  ],
+  
+  "keywords": ["editor", "wysiwyg", "javascript", "html", "component"],
+  "author": "elbert",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "rollup": "^2.79.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
