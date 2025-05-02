@@ -1,14 +1,14 @@
 {
   "name": "elditor-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple text editor",
-  "main": "dist/elditor-js.cjs.js",        
-  "module": "dist/elditor-js.esm.js",  
+  "main": "dist/elditor-js.cjs.js",
+  "module": "dist/elditor-js.esm.js",
   "exports": {
     "import": "./dist/elditor-js.esm.js",
     "require": "./dist/elditor-js.umd.js"
-  },    
-  "unpkg": "dist/elditor-js.iife.min.js",  
+  },
+  "unpkg": "dist/elditor-js.iife.min.js",
   "scripts": {
     "build": "rollup -c"
   },
@@ -20,7 +20,13 @@
     "url": "https://github.com/funGame07/elditor-js.git"
   },
   "homepage": "https://github.com/funGame07/elditor-js#README",
-  "keywords": ["editor", "wysiwyg", "javascript", "html", "component"],
+  "keywords": [
+    "editor",
+    "wysiwyg",
+    "javascript",
+    "html",
+    "component"
+  ],
   "author": "elbert",
   "license": "ISC",
   "devDependencies": {
