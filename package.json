@@ -15,7 +15,11 @@
   "files": [
     "dist"
   ],
-  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/funGame07/elditor-js.git"
+  },
+  "homepage": "https://github.com/funGame07/elditor-js#README",
   "keywords": ["editor", "wysiwyg", "javascript", "html", "component"],
   "author": "elbert",
   "license": "ISC",
