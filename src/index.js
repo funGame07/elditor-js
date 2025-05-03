@@ -104,7 +104,7 @@ const template = `
             </button>
         </div>
         <div id="elditor-editable" contenteditable="true"><p>Your content goes here</p></div>
-    </div>a
+    </div>
 `
 
 export class Elditor{
