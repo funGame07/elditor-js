@@ -9,20 +9,30 @@ class FormatText extends Format{
      * @param {NodeListOf<Element>} formatElement 
      * @param {HTMLElement} editorField
      */
-    constructor(formatElement, editorField){
+    constructor(formatElement, editorField, tagName = null){
         super()
-        formatElement.forEach(element =>{
-            element.addEventListener('click', () =>{
-                this.setRange()
-                if(editorField.contains(this.range.startContainer)){
-                    if(this.isNodeTagged(element.getAttribute('data-key'), this.range.startContainer)){
-                        this.unformatInitialization(element.getAttribute('data-key'), this.range)
-                    }else{
-                        this.formatInitialization(element.getAttribute('data-key'))
+        if(!formatElement && !editorField && tagName){
+            // then it comes from pople usimg editorfunc
+            this.setRange()
+            if(this.isNodeTagged(tagName, this.range.startContainer)){
+                this.unformatInitialization(tagName, this.range)
+            }else{
+                this.formatInitialization(tagName)
+            }
+        }else{
+            formatElement.forEach(element =>{
+                element.addEventListener('click', () =>{
+                    this.setRange()
+                    if(editorField.contains(this.range.startContainer)){
+                        if(this.isNodeTagged(element.getAttribute('data-key'), this.range.startContainer)){
+                            this.unformatInitialization(element.getAttribute('data-key'), this.range)
+                        }else{
+                            this.formatInitialization(element.getAttribute('data-key'))
+                        }
                     }
-                }
+                })
             })
-        })
+        }
     }
 
 

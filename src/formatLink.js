@@ -10,22 +10,37 @@ class FormatLink extends Format{
      */
     constructor(formatElement, editorField){
         super()
-        formatElement.addEventListener('click', (e)=>{
+        if(!formatElement && !editorField){
             this.setRange()
-            if(editorField.contains(this.range.startContainer)){
-                if(this.isNodeTagged('A', this.range.startContainer)){
-                    this.unformatLinkInitialization()
+            if(this.isNodeTagged('A', this.range.startContainer)){
+                this.unformatLinkInitialization()
+            }else{
+                const link = prompt('Link to: (ex: https://google.com)')
+                const newURL = this.validateURL(link.trim())
+                if(newURL){
+                    this.formatLinkInitialization(link)
                 }else{
-                    const link = prompt('Link to: (ex: https://google.com)')
-                    const newURL = this.validateURL(link.trim())
-                    if(newURL){
-                        this.formatLinkInitialization(link)
-                    }else{
-                        alert(link + ' is not valid. maybe there is a typo or in the wrong format')
-                    }
+                    alert(link + ' is not valid. maybe there is a typo or in the wrong format')
                 }
             }
-        })
+        }else{
+            formatElement.addEventListener('click', (e)=>{
+                this.setRange()
+                if(editorField.contains(this.range.startContainer)){
+                    if(this.isNodeTagged('A', this.range.startContainer)){
+                        this.unformatLinkInitialization()
+                    }else{
+                        const link = prompt('Link to: (ex: https://google.com)')
+                        const newURL = this.validateURL(link.trim())
+                        if(newURL){
+                            this.formatLinkInitialization(link)
+                        }else{
+                            alert(link + ' is not valid. maybe there is a typo or in the wrong format')
+                        }
+                    }
+                }
+            })
+        }
     }
 
     /**

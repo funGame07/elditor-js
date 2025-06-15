@@ -8,20 +8,30 @@ class FormatList extends Format{
      * @param {NodeListOf<Element>} formatElement 
      * @param {HTMLElement} editorField
      */
-    constructor(formatElement, editorField){
+    constructor(formatElement, editorField, type = null){
         super()
-        formatElement.forEach(element =>{
-            element.addEventListener('click', () =>{
-                this.setRange()
-                if(editorField.contains(this.range.startContainer)){
-                    if(this.isNodeTagged(element.getAttribute('data-key'), this.range.startContainer)){
-                        this.unformatListInitialization(element.getAttribute('data-key'))
-                    }else{
-                        this.formatListInitialization(element.getAttribute('data-key'))
+        if(!formatElement && !editorField && type){
+            this.setRange()
+            if(this.isNodeTagged(type, this.range.startContainer)){
+                this.unformatListInitialization(type)
+            }else{
+                this.formatListInitialization(type)
+            }
+        }else{
+            formatElement.forEach(element =>{
+                element.addEventListener('click', () =>{
+                    this.setRange()
+                    if(editorField.contains(this.range.startContainer)){
+                        if(this.isNodeTagged(element.getAttribute('data-key'), this.range.startContainer)){
+                            this.unformatListInitialization(element.getAttribute('data-key'))
+                        }else{
+                            this.formatListInitialization(element.getAttribute('data-key'))
+                        }
                     }
-                }
+                })
             })
-        })
+        }
+        
     }
 
     /**

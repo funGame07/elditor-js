@@ -29,20 +29,31 @@ class FormatBadge extends Format{
      * @param {NodeListOf<Element>} formatElement 
      * @param {HTMLElement} editorField
      */
-    constructor(formatElement, editorField){
+    constructor(formatElement, editorField, type){
         super()
-        formatElement.addEventListener('change', ()=>{
+        if(!formatElement && !editorField && type){
             this.setRange()
-            if(editorField.contains(this.range.startContainer)){
-                if(formatElement.value === 'nothing'){
-                    if(this.isNodeTagged('FIGURE', this.range.startContainer)){
-                        this.unformatBadgeInitialization()
-                    }
-                }else{
-                    this.formatBadgeInitialization(formatElement.value)
+            if(type === 'nothing'){
+                if(this.isNodeTagged('FIGURE', this.range.startContainer)){
+                    this.unformatBadgeInitialization()
                 }
+            }else{
+                this.formatBadgeInitialization(type)
             }
-        })
+        }else{
+            formatElement.addEventListener('change', ()=>{
+                this.setRange()
+                if(editorField.contains(this.range.startContainer)){
+                    if(formatElement.value === 'nothing'){
+                        if(this.isNodeTagged('FIGURE', this.range.startContainer)){
+                            this.unformatBadgeInitialization()
+                        }
+                    }else{
+                        this.formatBadgeInitialization(formatElement.value)
+                    }
+                }
+            })
+        }
     }
 
     /**

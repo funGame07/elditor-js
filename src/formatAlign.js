@@ -8,20 +8,30 @@ class FormatAlign extends Format{
      * @param {NodeListOf<Element>} formatElement 
      * @param {HTMLElement} editorField
      */
-    constructor(formatElement, editorField){
+    constructor(formatElement, editorField, position = null){
         super()
-        formatElement.forEach(element =>{
-            element.addEventListener('click', () =>{
-                this.setRange()
-                if(editorField.contains(this.range.startContainer)){
-                    if(this.isNodeTagged(element.getAttribute('data-key'), this.range.startContainer)){
-                        this.unformatListInitialization(element.getAttribute('data-key'))
-                    }else{
-                        this.formatAlignInitialization(element.getAttribute('data-key'))
+        if(!formatElement && !editorField && position){
+            this.setRange()
+            if(this.isNodeTagged(position, this.range.startContainer)){
+                this.unformatListInitialization(position)
+            }else{
+                this.formatAlignInitialization(position)
+            }
+        }else{
+            formatElement.forEach(element =>{
+                element.addEventListener('click', () =>{
+                    this.setRange()
+                    if(editorField.contains(this.range.startContainer)){
+                        if(this.isNodeTagged(element.getAttribute('data-key'), this.range.startContainer)){
+                            this.unformatListInitialization(element.getAttribute('data-key'))
+                        }else{
+                            this.formatAlignInitialization(element.getAttribute('data-key'))
+                        }
                     }
-                }
+                })
             })
-        })
+        }
+        
     }
 
     /**

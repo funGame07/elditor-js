@@ -15,8 +15,16 @@ class FormatHeading extends Format{
      * @param {HTMLElement} formatElement 
      * @param {HTMLElement} editorField
      */
-    constructor(formatElement, editorField){
+    constructor(formatElement, editorField, tag = null){
         super()
+        if(!formatElement && !editorField && tag){
+            this.setRange()
+            if(this.isNodeTagged(tag, this.range.startContainer)){
+                this.unformatHeadingInitialization(this.range.startContainer)
+            }else{
+                this.formatHeadingInitialization(tag)
+            }
+        }
         formatElement.addEventListener('change', ()=>{
             this.setRange()
             if(editorField.contains(this.range.startContainer)){
@@ -26,7 +34,6 @@ class FormatHeading extends Format{
                     this.formatHeadingInitialization(formatElement.value)
                 }
             }
-            
         })
     }
 

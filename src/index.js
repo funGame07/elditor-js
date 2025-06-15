@@ -1,6 +1,12 @@
 import './style.css'
 
 import MyLib from './myLib.js'
+import FormatText from './formatText.js'
+import FormatList from './formatList.js'
+import FormatAlign from './formatAlign.js'
+import FormatLink from './formatLink.js'
+import FormatHeading from './formatHeading.js'
+import FormatImage from './formatImage.js'
 
 const template = `
     <div id="elditor">
@@ -107,7 +113,74 @@ const template = `
     </div>
 `
 
-export class Elditor{
+export class ElditorFunc{
+    /**
+     * tag available: strong, em, u, sub, sup, s
+     * will automatically remove style if selection content has same type of style
+     */
+    formatText(tagName){
+        return (new FormatText(null, null, tagName))
+    }
+    /**
+     * type available: ol, ul
+     * will automatically remove list if selection content has same type of list
+     */
+    formatList(type){
+        return new FormatList(null, null, type)
+    }
+    /**
+     * position available: justify, center, left, right
+     */
+    formatAlign(position){
+        return new FormatAlign(null, null, position)
+    }
+    /**
+     * types available: danger, warning, success, danger, info
+     * to remove badge use 'nothing' as type
+     */
+    formatBadge(type){
+        return new FormatAlign(null, null, type)
+    }
+    /**
+     * tag available: H1, H2, H3, H4, H5, H6
+     * will overwrite p, ul, li tag
+     */
+    formatHeading(tag){
+        return new FormatHeading(null, null, tag)
+    }
+    /**
+     * will ask for user input from browser prompt
+     * this function is not fully developed yet, still an idea
+     */
+    formatLink(){
+        return new FormatLink()
+    }
+    /**
+     * blob ex: e.target.files[0], etc
+     * if you want to save your img automatically to your server provide cb that returns {imagePath, apiDomain}, 
+     * the name of image field is "uploadImage" in FormData, here's how you'd like to provide the cb:
+     * async function imageCb(formData){
+            const response = await axios.post('/upload/image', formData, {
+            headers:{
+                "Content-Type": "multipart/form-data"
+            },
+            withCredentials: true,
+            })
+
+            const data = response.data
+            return {
+                imagePath: data.imagePath, // ex: uploads/image.png
+                apiDomain: <your domain name> // ex: https://example.com
+            }
+        }
+     */
+    formatImage(blob, cb){
+        return new FormatImage(null, null, blob, cb)
+    }
+    
+}
+
+export default class Elditor{
     /**
      * 
      * @param {HTMLElement} container 
