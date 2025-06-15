@@ -7,6 +7,7 @@ import FormatAlign from './formatAlign.js'
 import FormatLink from './formatLink.js'
 import FormatHeading from './formatHeading.js'
 import FormatImage from './formatImage.js'
+import FormatBadge from './formatBadge.js'
 
 const template = `
     <div id="elditor">
@@ -139,7 +140,7 @@ export class ElditorFunc{
      * to remove badge use 'nothing' as type
      */
     formatBadge(type){
-        return new FormatAlign(null, null, type)
+        return new FormatBadge(null, null, type)
     }
     /**
      * tag available: H1, H2, H3, H4, H5, H6
