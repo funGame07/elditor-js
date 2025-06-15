@@ -1,6 +1,6 @@
 {
   "name": "elditor-js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple text editor",
   "main": "dist/elditor-js.cjs.js",
   "module": "dist/elditor-js.esm.js",
