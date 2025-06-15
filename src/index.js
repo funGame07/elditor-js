@@ -180,7 +180,7 @@ export class ElditorFunc{
     
 }
 
-export default class Elditor{
+export class Elditor{
     /**
      * 
      * @param {HTMLElement} container 
