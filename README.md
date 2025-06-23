@@ -36,6 +36,16 @@ if you are using cdn(esm)
     </script>   
 ```
 
+# Getting Only the Functionality
+```html
+    <button>bold me</button>
+```
+```javascript
+    import { ElditorFunc } from 'elditor-js';
+
+    button.addEventListener('click', ElditorFunc.formatText('B'))
+```
+
 # Info
 
 you may find some bugs on my text editor. hehe
